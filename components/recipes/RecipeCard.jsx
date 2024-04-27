@@ -1,18 +1,23 @@
-import Image from 'next/image'
-import { Recipe } from '@/constant/images'
-import Link from 'next/link'
+import Image from "next/image";
+import Link from "next/link";
 
-export default function RecipeCard() {
+export default function RecipeCard({ recipe }) {
   return (
     <div className="card">
-      <Link href="/recipes/1">
-        <Image src={Recipe} className="rounded-md" alt="recipe" />
-        <h4 className="my-2">Chef John`s Turkey Sloppy Joes</h4>
+      <Link href={`/recipes/${recipe?.id}`}>
+        <Image
+          src={recipe?.thumbnail}
+          className="rounded-md"
+          alt="recipe"
+          width={500}
+          height={500}
+        />
+        <h4 className="my-2">{recipe?.name}</h4>
       </Link>
       <div className="py-2 flex justify-between text-xs text-gray-500">
-        <span>⭐️ 5.0</span>
-        <span>By: John Doe</span>
+        <span>⭐️ {recipe?.rating}</span>
+        <span>{recipe?.author}</span>
       </div>
     </div>
-  )
+  );
 }
