@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Logo } from "@/constant/images";
 import Link from "next/link";
+import SignInOut from "./auth/SignInOut";
 
 export default function Navbar() {
   return (
@@ -28,7 +29,7 @@ export default function Navbar() {
           </li>
 
           <li className="py-2 bg-[#eb4a36] px-6 rounded-md text-white content-center">
-            <Link href="./login">Login</Link>
+            <SignInOut />
           </li>
         </ul>
       </div>
