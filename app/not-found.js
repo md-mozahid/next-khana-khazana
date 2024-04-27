@@ -1,7 +1,6 @@
 import Link from "next/link";
-import React from "react";
 
-export default function notFound() {
+export default function NotFound() {
   return (
     <div className="flex flex-col items-center justify-center">
       <h3 className="text-red-500 text-3xl my-10">404</h3>
@@ -10,7 +9,7 @@ export default function notFound() {
       <div className="flex gap-5 mt-10">
         <button className="text-blue-500">Go Back</button>
         <button className="bg-sky-500 px-3 py-1 rounded-md text-white">
-          <Link to="/">Go to Home</Link>
+          <Link href="/">Go to Home</Link>
         </button>
       </div>
     </div>
