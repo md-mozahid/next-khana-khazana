@@ -10,7 +10,7 @@ async function connectMongo() {
     )
   }
   if (cached.connection) {
-    console.log('db connected')
+    // console.log('db connected')
     return cached.connection
   }
   if (!cached.promise) {

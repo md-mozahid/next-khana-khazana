@@ -1,12 +1,12 @@
-import RecipeCard from "@/components/recipes/RecipeCard";
-import { getAllRecipes } from "@/db/queries";
+import RecipeCard from '@/components/recipes/RecipeCard'
+import { getAllRecipes } from '@/db/queries'
 
 export default async function CategoryName({ params: { categoryName } }) {
-  const allRecipes = await getAllRecipes();
+  const allRecipes = await getAllRecipes()
 
   const category = allRecipes.filter(
     (recipe) => recipe?.category === decodeURIComponent(categoryName)
-  );
+  )
 
   return (
     <section className="container py-8">
@@ -21,5 +21,5 @@ export default async function CategoryName({ params: { categoryName } }) {
         </div>
       </div>
     </section>
-  );
+  )
 }

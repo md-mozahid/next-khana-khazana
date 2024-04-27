@@ -1,5 +1,5 @@
 import Loading from '@/components/Loading'
 
-export default function LoadingPulse() {
+export default function LoaderPulse() {
   return <Loading />
 }

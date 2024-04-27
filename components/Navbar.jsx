@@ -9,9 +9,12 @@ export default function Navbar() {
       <div className="container flex justify-between py-6">
         <Link href="/">
           <Image
-            src={Logo}
+            src='/images/logo.png'
+            // src={Logo}
             alt="logo"
             className="object-cover h-[40px]"
+            width={125}
+            height={40} 
           />
         </Link>
 
