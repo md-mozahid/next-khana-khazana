@@ -1,6 +1,6 @@
 "use server";
 
-import { createUser, loginUser } from "@/db/queries";
+import { createUser, findUser, loginUser, updateFavorites } from "@/db/queries";
 import { redirect } from "next/navigation";
 
 // register user
@@ -23,4 +23,13 @@ async function performLogin(formData) {
   }
 }
 
-export { registerUser, performLogin };
+// favorite recipe
+async function favoriteRecipe(recipeId, userId) {
+  try {
+    await updateFavorites(recipeId, userId);
+  } catch (error) {
+    throw error;
+  }
+}
+
+export { registerUser, performLogin, favoriteRecipe };

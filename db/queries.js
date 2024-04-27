@@ -5,6 +5,7 @@ import {
   replaceMongoIdInArray,
   replaceMongoIdInObject,
 } from "@/utils/data-utils";
+import mongoose from "mongoose";
 
 // get all recipes
 async function getAllRecipes() {
@@ -34,4 +35,27 @@ async function loginUser(credential) {
   return null;
 }
 
-export { getAllRecipes, getSingleRecipe, createUser, loginUser };
+// favorites recipe
+async function updateFavorites(recipeId, userId) {
+  const user = await userModel.findById(userId);
+
+  if (userId) {
+    const foundRecipe = user.favourites.find(
+      (id) => id.toString() === recipeId
+    );
+    if (foundRecipe) {
+      user.favourites.pull(new mongoose.Types.ObjectId(recipeId));
+    } else {
+      user.favourites.push(new mongoose.Types.ObjectId(recipeId));
+    }
+    user.save();
+  }
+}
+
+export {
+  getAllRecipes,
+  getSingleRecipe,
+  createUser,
+  loginUser,
+  updateFavorites,
+};
