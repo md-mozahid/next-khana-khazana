@@ -25,18 +25,6 @@ export default async function Sidebar() {
         <li>
           <Link href="/categories/Dessert">Dessert</Link>
         </li>
-
-        {/* <li>
-          <Link href="/categories">Brunch Haven Delights</Link>
-        </li>
-
-        <li>
-          <Link href="/categories">Rise & Dine Eatery</Link>
-        </li>
-
-        <li>
-          <Link href="/categories">Breakfast Oasis Junction</Link>
-        </li> */}
       </ul>
     </div>
   )

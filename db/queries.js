@@ -34,15 +34,4 @@ async function loginUser(credential) {
   return null;
 }
 
-// get categories
-async function getRecipesCategoryWise(name) {
-  const recipes = await recipeModel.find(name);
-  return replaceMongoIdInArray(recipes);
-}
-export {
-  getAllRecipes,
-  getSingleRecipe,
-  createUser,
-  loginUser,
-  getRecipesCategoryWise,
-};
+export { getAllRecipes, getSingleRecipe, createUser, loginUser };

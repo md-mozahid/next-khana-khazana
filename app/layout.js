@@ -2,7 +2,6 @@ import Navbar from "@/components/Navbar";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import AuthProvider from "./provider/AuthProvider";
-// import connectMongo from '@/dbConnect/connectMongo'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,7 +11,6 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  // await connectMongo()
   return (
     <html lang="en">
       <body className={inter.className}>
