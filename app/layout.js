@@ -17,6 +17,7 @@ export default async function RootLayout({ children }) {
         <AuthProvider>
           <Navbar />
           <main>{children}</main>
+          <div id="modal-root-content" />
         </AuthProvider>
       </body>
     </html>

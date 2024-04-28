@@ -1,3 +1,4 @@
+import Modal from '@/components/Modal'
 import RecipeDetails from '@/components/recipes/RecipeDetails'
 import RecipeMaking from '@/components/recipes/RecipeMaking'
 import { getSingleRecipe } from '@/db/queries'
@@ -12,7 +13,7 @@ export async function generateMetadata({ params: { recipeId }, parent }) {
   }
 }
 
-export default async function RecipeDetail({ params: { recipeId } }) {
+export default async function RecipeInterception({ params: { recipeId } }) {
   const recipe = await getSingleRecipe(recipeId)
 
   if (!recipe) {
@@ -21,12 +22,14 @@ export default async function RecipeDetail({ params: { recipeId } }) {
 
   return (
     <>
-      <section>
-        <div className="grid grid-cols-12 container gap-8 justify-items-center">
-          <RecipeDetails recipe={recipe} />
-        </div>
-      </section>
-      <RecipeMaking recipeSteps={recipe?.steps} />
+      <Modal>
+        <section>
+          <div className="grid grid-cols-12 container gap-8 justify-items-center">
+            <RecipeDetails recipe={recipe} />
+          </div>
+        </section>
+        <RecipeMaking recipeSteps={recipe?.steps} />
+      </Modal>
     </>
   )
 }
