@@ -1,12 +1,12 @@
 "use server";
 
-import { createUser, findUser, loginUser, updateFavorites } from "@/db/queries";
+import { createUser, loginUser, updateFavorites } from "@/db/queries";
 import { redirect } from "next/navigation";
 
 // register user
 async function registerUser(formData) {
   const user = Object.fromEntries(formData);
-  const created = await createUser(user);
+  await createUser(user);
   redirect("/login");
 }
 
