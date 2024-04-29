@@ -1,6 +1,6 @@
 import RecipeDetails from "@/components/recipes/RecipeDetails";
 import RecipeMaking from "@/components/recipes/RecipeMaking";
-import { getSingleRecipe } from "@/db/queries";
+import { getAllRecipes, getSingleRecipe } from "@/db/queries";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({ params: { recipeId } }) {
@@ -23,6 +23,8 @@ export async function generateMetadata({ params: { recipeId } }) {
 
 export default async function RecipeDetail({ params: { recipeId } }) {
   const recipe = await getSingleRecipe(recipeId);
+  const allRecipes = await getAllRecipes()
+  // const recipe = allRecipes.find((r) => r?.id === recipeId)
 
   if (!recipe) {
     notFound();

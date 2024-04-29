@@ -16,20 +16,24 @@ async function getAllRecipes() {
 
 // get single recipes
 async function getSingleRecipe(recipeId) {
-  await connectMongo()
-  const recipe = await recipeModel.findById(recipeId).lean();
-  return replaceMongoIdInObject(recipe);
+  await connectMongo();
+  try {
+    const recipe = await recipeModel.findById(recipeId).lean();
+    return replaceMongoIdInObject(recipe);
+  } catch (error) {
+    throw error;
+  }
 }
 
 // create user
 async function createUser(user) {
-  await connectMongo()
+  await connectMongo();
   return await userModel.create(user);
 }
 
 // login user
 async function loginUser(credential) {
-  await connectMongo()
+  await connectMongo();
   const user = await userModel.findOne(credential).lean();
   if (user) {
     return replaceMongoIdInObject(user);
@@ -39,7 +43,7 @@ async function loginUser(credential) {
 
 // favorites recipe
 async function updateFavorites(recipeId, userId) {
-  await connectMongo()
+  await connectMongo();
   const user = await userModel.findById(userId);
 
   if (userId) {
