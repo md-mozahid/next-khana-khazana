@@ -15,23 +15,23 @@ export default function ShareModal() {
           <div className="py-5 flex flex-grow items-center justify-center absolute z-10 left-[40%]">
             <div className="rounded-lg bg-slate-500 p-8 text-center shadow-xl w-[400px] m-auto">
               <div className="flex items-center justify-center gap-6">
-                <button className="p-4 rounded-md bg-sky-600">
-                  <Link href="https://facebook.com" target="_blank">
+                <button className="p-4 rounded-md bg-[#3b5997] hover:scale-110 transition-all">
+                  <Link href="https://www.facebook.com" target="_blank">
                     <Image src={Facebook} alt="facebook" />
                   </Link>
                 </button>
-                <button className="p-4 rounded-md bg-sky-600">
-                  <Link href="https://twitter.com/" target="_blank">
+                <button className="p-4 rounded-md bg-[#1ba1f2] hover:scale-110 transition-all">
+                  <Link href="https://www.twitter.com/" target="_blank">
                     <Image src={Twitter} alt="facebook" />
                   </Link>
                 </button>
-                <button className="p-4 rounded-md bg-sky-600">
-                  <Link href="https://instagram.com" target="_blank">
+                <button className="p-4 rounded-md bg-[#c231a1] hover:scale-110 transition-all">
+                  <Link href="https://www.instagram.com" target="_blank">
                     <Image src={Instagram} alt="facebook" />
                   </Link>
                 </button>
-                <button className="p-4 rounded-md bg-sky-600">
-                  <Link href="https://linkedin.com/" target="_blank">
+                <button className="p-4 rounded-md bg-[#0077b5] hover:scale-110 transition-all">
+                  <Link href="https://www.linkedin.com/" target="_blank">
                     <Image src={Linkedin} alt="facebook" />
                   </Link>
                 </button>

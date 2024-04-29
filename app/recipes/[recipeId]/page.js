@@ -22,9 +22,9 @@ export async function generateMetadata({ params: { recipeId } }) {
 }
 
 export default async function RecipeDetail({ params: { recipeId } }) {
+  // const allRecipes = await getAllRecipes();
+  // const id = allRecipes.find((r) => r?.recipe === recipeId);
   const recipe = await getSingleRecipe(recipeId);
-  const allRecipes = await getAllRecipes()
-  // const recipe = allRecipes.find((r) => r?.id === recipeId)
 
   if (!recipe) {
     notFound();

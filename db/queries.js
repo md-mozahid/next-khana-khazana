@@ -17,12 +17,8 @@ async function getAllRecipes() {
 // get single recipes
 async function getSingleRecipe(recipeId) {
   await connectMongo();
-  try {
-    const recipe = await recipeModel.findById(recipeId).lean();
-    return replaceMongoIdInObject(recipe);
-  } catch (error) {
-    throw error;
-  }
+  const recipe = await recipeModel.findById(recipeId).lean();
+  return replaceMongoIdInObject(recipe);
 }
 
 // create user
