@@ -15,3 +15,13 @@ export const replaceMongoIdInObject = (obj) => {
   const { _id, ...updatedObj } = { ...obj, id: obj._id.toString() }
   return updatedObj
 }
+
+// find category name in array
+export const findUniqueCategoryName = (recipesArray) => {
+  const uniqueCategories = new Set()
+  recipesArray.forEach((recipe) => {
+    uniqueCategories.add(recipe.category)
+  })
+  const uniqueCategoryName = [...uniqueCategories]
+  return uniqueCategoryName
+}

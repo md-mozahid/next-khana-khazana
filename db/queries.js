@@ -31,6 +31,17 @@ async function getSingleRecipe(recipeId) {
   }
 }
 
+// recipe by category
+async function getRecipeByCategories(categoryName) {
+  try {
+    await connectMongo()
+    const allRecipes = await recipeModel.find({ category: categoryName }).lean()
+    return replaceMongoIdInArray(allRecipes)
+  } catch (error) {
+    throw error
+  }
+}
+
 // create user
 async function createUser(user) {
   await connectMongo()
@@ -79,4 +90,5 @@ export {
   getSingleRecipe,
   loginUser,
   updateFavorites,
+  getRecipeByCategories
 }

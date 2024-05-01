@@ -6,24 +6,29 @@ import { notFound } from 'next/navigation'
 export async function generateMetadata({ params: { recipeId } }) {
   const recipe = await getSingleRecipe(recipeId)
 
-  return {
-    title: recipe?.name,
-    description: recipe?.description,
-    openGraph: {
-      images: [
-        {
-          url: `http://localhost:3000/api/og?title=${recipe?.thumbnail}`,
-          width: 1200,
-          height: 600,
-        },
-      ],
-    },
+  if (recipe) {
+    return {
+      title: `${recipe?.name}`,
+      description: recipe?.description,
+      openGraph: {
+        images: [
+          {
+            url: `http://localhost:3000/api/og?title=${recipe?.thumbnail}`,
+            width: 1200,
+            height: 600,
+          },
+        ],
+      },
+    }
+  } else {
+    return {
+      title: 'Recipe Not Found',
+      description: 'Recipe not found that requested by user.',
+    }
   }
 }
 
 export default async function RecipeDetail({ params: { recipeId } }) {
-  // const allRecipes = await getAllRecipes();
-  // const id = allRecipes.find((r) => r?.recipe === recipeId);
   const recipe = await getSingleRecipe(recipeId)
 
   if (!recipe) {
