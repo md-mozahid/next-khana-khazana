@@ -1,10 +1,10 @@
-import RecipeDetails from "@/components/recipes/RecipeDetails";
-import RecipeMaking from "@/components/recipes/RecipeMaking";
-import { getAllRecipes, getSingleRecipe } from "@/db/queries";
-import { notFound } from "next/navigation";
+import RecipeDetails from '@/components/recipes/RecipeDetails'
+import RecipeMaking from '@/components/recipes/RecipeMaking'
+import { getSingleRecipe } from '@/db/queries'
+import { notFound } from 'next/navigation'
 
 export async function generateMetadata({ params: { recipeId } }) {
-  const recipe = await getSingleRecipe(recipeId);
+  const recipe = await getSingleRecipe(recipeId)
 
   return {
     title: recipe?.name,
@@ -12,22 +12,22 @@ export async function generateMetadata({ params: { recipeId } }) {
     openGraph: {
       images: [
         {
-          url: `http://localhost:3000/api/og?title=${recipe?.name}`,
+          url: `http://localhost:3000/api/og?title=${recipe?.thumbnail}`,
           width: 1200,
           height: 600,
         },
       ],
     },
-  };
+  }
 }
 
 export default async function RecipeDetail({ params: { recipeId } }) {
   // const allRecipes = await getAllRecipes();
   // const id = allRecipes.find((r) => r?.recipe === recipeId);
-  const recipe = await getSingleRecipe(recipeId);
+  const recipe = await getSingleRecipe(recipeId)
 
   if (!recipe) {
-    notFound();
+    notFound()
   }
 
   return (
@@ -39,5 +39,5 @@ export default async function RecipeDetail({ params: { recipeId } }) {
       </section>
       <RecipeMaking recipeSteps={recipe?.steps} />
     </>
-  );
+  )
 }

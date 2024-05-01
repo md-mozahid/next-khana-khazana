@@ -1,14 +1,16 @@
 import Image from "next/image";
 import Favourite from "./Favourite";
 import ShareRecipe from "./ShareRecipe";
-import ShareModal from "../ShareModal";
 
 export default function RecipeDetails({ recipe }) {
+  
   return (
     <>
       <div className="col-span-12 md:col-span-6">
         <Image
-          src={recipe?.thumbnail}
+        // placeholder="blur"
+          src={`https://source.unsplash.com/random/800x600?${recipe?.name}`}
+          // src={recipe?.thumbnail}
           alt="recipe"
           className="w-full h-full rounded-lg object-contain"
           width={900}
@@ -36,8 +38,7 @@ export default function RecipeDetails({ recipe }) {
               stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
-              className="mx-auto"
-            >
+              className="mx-auto">
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
               <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
               <path d="M12 7v5l3 3" />
@@ -58,8 +59,7 @@ export default function RecipeDetails({ recipe }) {
               stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
-              className="mx-auto"
-            >
+              className="mx-auto">
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
               <path d="M6.5 17h11" />
               <path d="M6 20v-2a6 6 0 1 1 12 0v2a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1z" />
@@ -81,8 +81,7 @@ export default function RecipeDetails({ recipe }) {
               stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
-              className="mx-auto"
-            >
+              className="mx-auto">
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
               <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
               <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
@@ -100,5 +99,5 @@ export default function RecipeDetails({ recipe }) {
         </div>
       </div>
     </>
-  );
+  )
 }
