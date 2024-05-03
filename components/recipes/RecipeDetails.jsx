@@ -1,20 +1,23 @@
-import Image from "next/image";
-import Favourite from "./Favourite";
-import ShareRecipe from "./ShareRecipe";
+import { getBlurImage } from '@/utils/getBlurImage'
+import Image from 'next/image'
+import Favourite from './Favourite'
+import ShareRecipe from './ShareRecipe'
 
-export default function RecipeDetails({ recipe }) {
-  
+export default async function RecipeDetails({ recipe }) {
+  const { base64 } = await getBlurImage(recipe?.image)
+  const imageUrl = `${recipe?.image}? ${new Date().getTime()}` // prevent image caching
+
   return (
     <>
       <div className="col-span-12 md:col-span-6">
         <Image
-        // placeholder="blur"
-          src={`https://source.unsplash.com/random/800x600?${recipe?.name}`}
-          // src={recipe?.thumbnail}
-          alt="recipe"
+          src={imageUrl}
+          alt={recipe?.name}
           className="w-full h-full rounded-lg object-contain"
           width={900}
           height={900}
+          placeholder="blur"
+          blurDataURL={base64}
         />
       </div>
       <div className="col-span-12 md:col-span-6 py-8 flex flex-col justify-center">

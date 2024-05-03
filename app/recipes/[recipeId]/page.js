@@ -1,7 +1,9 @@
+import Loading from '@/components/Loading'
 import RecipeDetails from '@/components/recipes/RecipeDetails'
 import RecipeMaking from '@/components/recipes/RecipeMaking'
 import { getSingleRecipe } from '@/db/queries'
 import { notFound } from 'next/navigation'
+import { Suspense } from 'react'
 
 export async function generateMetadata({ params: { recipeId } }) {
   const recipe = await getSingleRecipe(recipeId)
@@ -37,11 +39,13 @@ export default async function RecipeDetail({ params: { recipeId } }) {
 
   return (
     <>
-      <section>
-        <div className="grid grid-cols-12 container gap-8 justify-items-center">
-          <RecipeDetails recipe={recipe} />
-        </div>
-      </section>
+      <Suspense fallback={<Loading />}>
+        <section>
+          <div className="grid grid-cols-12 container gap-8 justify-items-center">
+            <RecipeDetails recipe={recipe} />
+          </div>
+        </section>
+      </Suspense>
       <RecipeMaking recipeSteps={recipe?.steps} />
     </>
   )

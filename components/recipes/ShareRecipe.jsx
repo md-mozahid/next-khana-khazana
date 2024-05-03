@@ -37,25 +37,25 @@ export default function ShareRecipe() {
           className={`transition-opacity ${
             show ? 'opacity-100' : 'opacity-0'
           } bg-slate-200 w-64 h-20 px-1.5 py-2.5 rounded-xl absolute bottom-10 right-0 flex items-center justify-center gap-5`}>
-          <FacebookShareButton url={window.location.href}>
+          <FacebookShareButton>
             <FacebookIcon
               size={40}
               className="rounded-xl hover:scale-110 transition-all"
             />
           </FacebookShareButton>
-          <TwitterShareButton url={window.location.href}>
+          <TwitterShareButton>
             <TwitterIcon
               size={40}
               className="rounded-xl hover:scale-110 transition-all"
             />
           </TwitterShareButton>
-          <LinkedinShareButton url={window.location.href}>
+          <LinkedinShareButton>
             <LinkedinIcon
               size={40}
               className="rounded-xl hover:scale-110 transition-all"
             />
           </LinkedinShareButton>
-          <WhatsappShareButton url={window.location.href}>
+          <WhatsappShareButton>
             <WhatsappIcon
               size={40}
               className="rounded-xl hover:scale-110 transition-all"
