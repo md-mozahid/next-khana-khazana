@@ -11,11 +11,16 @@ export async function generateMetadata({ params: { recipeId } }) {
   if (recipe) {
     return {
       title: `${recipe?.name}`,
-      description: recipe?.description,
+      description: recipe?.description?.slice(0, 100),
       openGraph: {
+        title: `${recipe?.name}`,
+        siteName: 'Khana Khazana',
+        url: `https://m-khana-khazana.vercel.app/recipes/${recipeId}`,
+        type: 'website',
         images: [
           {
-            url: `http://localhost:3000/api/og?title=${recipe?.thumbnail}`,
+            url: recipe?.image,
+            alt: recipe?.name,
             width: 1200,
             height: 600,
           },

@@ -14,7 +14,8 @@ async function getAllRecipes() {
     const allRecipes = await recipeModel.find().lean()
     return replaceMongoIdInArray(allRecipes)
   } catch (error) {
-    throw error
+    console.error('Error fetching recipes:', error.message)
+    throw new Error('Failed to fetch recipes')
   }
 }
 
@@ -27,6 +28,7 @@ async function getSingleRecipe(recipeId) {
       return replaceMongoIdInObject(recipe)
     }
   } catch (error) {
+    console.error('Error finding single recipe:', error.message)
     return null
   }
 }
@@ -44,8 +46,14 @@ async function getRecipeByCategories(categoryName) {
 
 // create user
 async function createUser(user) {
-  await connectMongo()
-  return await userModel.create(user)
+  try {
+    await connectMongo()
+    const newUser = await userModel.create(user)
+    return newUser
+  } catch (error) {
+    console.error('Error creating user:', error.message)
+    throw new Error('Failed to create user')
+  }
 }
 
 // login user
@@ -58,7 +66,8 @@ async function loginUser(credential) {
     }
     return null
   } catch (error) {
-    throw error
+    console.error('Error in login:', error.message)
+    throw new Error('Failed to login')
   }
 }
 
@@ -87,8 +96,8 @@ async function updateFavorites(recipeId, userId) {
 export {
   createUser,
   getAllRecipes,
+  getRecipeByCategories,
   getSingleRecipe,
   loginUser,
   updateFavorites,
-  getRecipeByCategories
 }
