@@ -1,17 +1,20 @@
-"use client";
+'use client'
 
-import Link from "next/link";
-import { useAuth } from "@/app/hooks/useAuth";
-import { useRouter } from "next/navigation";
+import { useAuth } from '@/app/hooks/useAuth'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { toast } from 'sonner'
 
 export default function SignInOut() {
-  const { auth, setAuth } = useAuth();
-  const router = useRouter();
+  const { auth, setAuth } = useAuth()
+  const router = useRouter()
 
   const logout = () => {
-    setAuth(null);
-    router.push("/login");
-  };
+    toast.success('Logout successfully done.',)
+    setAuth(null)
+    router.push('/login')
+  }
+
   return (
     <div>
       {auth ? (
@@ -20,7 +23,7 @@ export default function SignInOut() {
             {auth?.firstName} {auth?.lastName}
           </span>
           <span className="mx-1">|</span>
-          <a className="cursor-pointer" onClick={logout}>
+          <a className="cursor-pointer" onClick={() => logout()}>
             Logout
           </a>
         </>
@@ -28,5 +31,5 @@ export default function SignInOut() {
         <Link href="/login">Login</Link>
       )}
     </div>
-  );
+  )
 }

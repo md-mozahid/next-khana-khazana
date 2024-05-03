@@ -1,29 +1,31 @@
-"use client";
+'use client'
 
-import { performLogin } from "@/app/actions";
-import { useAuth } from "@/app/hooks/useAuth";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { performLogin } from '@/app/actions'
+import { useAuth } from '@/app/hooks/useAuth'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+import { toast } from 'sonner'
 
 export default function LoginForm() {
-  const [error, setError] = useState("");
-  const { setAuth } = useAuth();
-  const router = useRouter();
+  const [error, setError] = useState('')
+  const { setAuth } = useAuth()
+  const router = useRouter()
 
   async function handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault()
 
     try {
-      const formData = new FormData(e.currentTarget);
-      const found = await performLogin(formData);
+      const formData = new FormData(e.currentTarget)
+      const found = await performLogin(formData)
       if (found) {
-        setAuth(found);
-        router.push("/");
+        setAuth(found)
+        toast.success('Login successfully done.')
+        router.push('/')
       } else {
-        setError("Please provide a valid login credential");
+        setError('Please provide a valid login credential')
       }
     } catch (error) {
-      setError(error.message);
+      setError(error.message)
     }
   }
 
@@ -43,11 +45,10 @@ export default function LoginForm() {
 
         <button
           type="submit"
-          className="bg-[#eb4a36] py-3 rounded-md text-white w-full mt-4"
-        >
+          className="bg-[#eb4a36] py-3 rounded-md text-white w-full mt-4">
           Login
         </button>
       </form>
     </>
-  );
+  )
 }

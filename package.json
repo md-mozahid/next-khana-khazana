@@ -14,7 +14,8 @@
     "next-share": "^0.27.0",
     "plaiceholder": "^3.0.0",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "sonner": "^1.4.41"
   },
   "devDependencies": {
     "@swc/cli": "^0.3.12",

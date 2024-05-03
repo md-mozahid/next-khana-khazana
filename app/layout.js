@@ -2,6 +2,7 @@ import Navbar from '@/components/Navbar'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import AuthProvider from './provider/AuthProvider'
+import { Toaster } from 'sonner'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -28,6 +29,10 @@ export default async function RootLayout({ children }) {
           <main>{children}</main>
           <div id="modal-root-content" />
         </AuthProvider>
+        <Toaster position='top-right' toastOptions={{
+          style: {backgroundColor: 'green'},
+          className:'sonner-text'
+        }} />
       </body>
     </html>
   )
