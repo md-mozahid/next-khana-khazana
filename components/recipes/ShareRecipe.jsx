@@ -29,6 +29,22 @@ export default function ShareRecipe() {
     }
   }, [shareRef])
 
+  // find current url
+  const CurrentUrl = () => {
+    const [currentPageUrl, setCurrentPageUrl] = useState('')
+
+    useEffect(() => {
+      const setUrl = () => {
+        if (typeof window !== 'undefined') {
+          setCurrentPageUrl(window.location.href)
+        }
+      }
+      setUrl()
+    }, [])
+    return currentPageUrl
+  }
+
+  const currentPageUrl = CurrentUrl()
   return (
     <>
       <div className="relative">
@@ -37,7 +53,7 @@ export default function ShareRecipe() {
           className={`transition-opacity ${
             show ? 'opacity-100' : 'opacity-0'
           } bg-slate-200 w-64 h-20 px-1.5 py-2.5 rounded-xl absolute bottom-10 right-0 flex items-center justify-center gap-5`}>
-          <FacebookShareButton>
+          <FacebookShareButton url={currentPageUrl}>
             <FacebookIcon
               size={40}
               className="rounded-xl hover:scale-110 transition-all"
