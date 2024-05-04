@@ -3,7 +3,7 @@
 import { performLogin } from '@/app/actions'
 import { useAuth } from '@/app/hooks/useAuth'
 import { useRouter } from 'next/navigation'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useFormStatus } from 'react-dom'
 import { toast } from 'sonner'
 

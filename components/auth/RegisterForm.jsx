@@ -1,6 +1,23 @@
-import { registerUser } from "@/app/actions";
+'use client'
+
+import { registerUser } from '@/app/actions'
+import { useFormStatus } from 'react-dom'
 
 export default function RegisterForm() {
+  
+  const Button = () => {
+    const { pending } = useFormStatus()
+    return (
+      <button
+        disabled={pending}
+        type="submit"
+        className={`${
+          pending ? 'bg-slate-500' : 'bg-[#eb4a36]'
+        }  py-3 rounded-md text-white w-full mt-4`}>
+        {pending ? 'Creating Account...' : 'Create Account'}
+      </button>
+    )
+  }
   return (
     <form className="login-form" action={registerUser}>
       <div>
@@ -21,13 +38,7 @@ export default function RegisterForm() {
         <label htmlFor="password">Password</label>
         <input type="password" name="password" id="password" />
       </div>
-
-      <button
-        type="submit"
-        className="bg-[#eb4a36] py-3 rounded-md text-white w-full mt-4"
-      >
-        Create Account
-      </button>
+      <Button />
     </form>
-  );
+  )
 }
