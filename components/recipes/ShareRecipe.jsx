@@ -59,19 +59,19 @@ export default function ShareRecipe() {
               className="rounded-xl hover:scale-110 transition-all"
             />
           </FacebookShareButton>
-          <TwitterShareButton>
+          <TwitterShareButton url={currentPageUrl}>
             <TwitterIcon
               size={40}
               className="rounded-xl hover:scale-110 transition-all"
             />
           </TwitterShareButton>
-          <LinkedinShareButton>
+          <LinkedinShareButton url={currentPageUrl}>
             <LinkedinIcon
               size={40}
               className="rounded-xl hover:scale-110 transition-all"
             />
           </LinkedinShareButton>
-          <WhatsappShareButton>
+          <WhatsappShareButton url={currentPageUrl}>
             <WhatsappIcon
               size={40}
               className="rounded-xl hover:scale-110 transition-all"
